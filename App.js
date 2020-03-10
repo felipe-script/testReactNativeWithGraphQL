@@ -3,11 +3,6 @@ import ApolloClient from 'apollo-boost'
 import TelaTest from './components/TelaTest'
 import { ApolloProvider } from '@apollo/react-hooks'
 
-import {
-  View,
-  Text,
-  StatusBar,
-} from 'react-native'
 const client = new ApolloClient({
   uri: 'https://48p1r2roz4.sse.codesandbox.io'
 })
