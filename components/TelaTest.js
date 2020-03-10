@@ -13,10 +13,17 @@ const GET_TODOS = gql`
 const TelaTest = () => {
   const [coins, setCoins] = useState([])
   const { data, loading, error } = useQuery(GET_TODOS)
-
+  const debugList = [
+    {
+      rate: 50.00
+    },
+    {
+      rate: 60.00
+    }
+  ]
   useEffect(() => {
     if(data !== undefined){
-      console.log(data)
+      console.log(data.rates)
       setCoins(data.rates)
     }
   }, [data])
@@ -33,13 +40,14 @@ const TelaTest = () => {
     <View style={{ flex: 1, paddingTop: 22 }}>
       <FlatList
         data={coins}
-        renderItem={({ currency, rate }) =>
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) =>(
           <Text style={{
             padding: 10,
             fontSize: 18,
             height: 44,
             color: '#000'
-          }}>{currency} - {rate}</Text>
+          }}>{item.currency} - {item.rate}</Text>)
         }
       />
     </View>
